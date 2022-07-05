@@ -25,10 +25,4 @@ addLayer("OW", {
         {key: "Shift+O", description: "Shift+O: Reset for Overwrites", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true}
-}), 
-
-upgrades; {
-    11; {
-
-    },
-},
+})
