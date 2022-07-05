@@ -2,7 +2,7 @@ let modInfo = {
 	name: "The Overwriting Tree",
 	id: "Overwriting",
 	author: "Atomic23982",
-	pointsName: "points",
+	pointsName: "Resets",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
