@@ -26,7 +26,9 @@ addLayer("OW", {
     ],
     layerShown(){return true}, upgrades: {
         11: {
-
+            title: "Faster Resets",
+            description: "Double your reset gain.",
+            cost: new Decimal(5),
         },
     },
 })
