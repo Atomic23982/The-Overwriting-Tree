@@ -13,8 +13,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0",
-	name: "Literally nothing",
+	num: "1.0",
+	name: "Overwrite Update",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -45,6 +45,7 @@ function getPointGen() {
 	let gain = new Decimal(1)
 	if (hasUpgrade('OW', 11)) gain = gain.times(2)
 	if (hasUpgrade('OW', 12)) gain = gain.times(upgradeEffect('OW', 12))
+	if (hasUpgrade('OW', 13)) mult = mult.times(upgradeEffect('OW', 13))
 	return gain
 }
 
