@@ -13,7 +13,7 @@ addLayer("OW", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5,
-    passiveGeneration() { if (hasUpgrade('OW', 22)) return 0.05 },
+    passiveGeneration() { if (hasUpgrade('OW', 22)) return 0.50 },
     gainMult() {
         let mult = new Decimal(1)
         if (hasUpgrade('OW', 23)) mult = mult.times(upgradeEffect('OW', 23))
@@ -62,7 +62,7 @@ addLayer("OW", {
 
         22: {
             title: "Automated Overwriting",
-            description: "Gain 5% of total Overwrites per second.",
+            description: "Gain 50% of total Overwrites per second.",
             cost: new Decimal(100), 
         },
 
