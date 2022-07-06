@@ -69,9 +69,9 @@ addLayer("OW", {
         22: {
             title: "Smart Decisions",
             description: "Overwrites boost their own gain.",
-            cost: new Decimal(100),
+            cost: new Decimal(200),
             effect() {
-                return player.OW.points.add(1).pow(0.025)
+                return player.OW.points.add(1).pow(0.1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, 
         },
