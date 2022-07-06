@@ -5,6 +5,7 @@ addLayer("OW", {
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
+        update(diff) {Overwrites += totalOverwrites*0.05*diff}
     }},
     color: "#BF40BF", 
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -61,8 +62,9 @@ addLayer("OW", {
 
         21: {
             title: "Automated Overwriting",
-            description: "Gain 5% of total Overwrites per second.",
+            description: "Gain 5% of total Overwrites per half a second.",
             cost: new Decimal(100),
+
 
         
         },
