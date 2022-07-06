@@ -14,6 +14,7 @@ addLayer("OW", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5,
     passiveGeneration() { if (hasUpgrade('OW', 22)) return 0.50 },
+    passiveGeneration() { if (hasUpgrade('OW', 31)) return 0.50 },
     gainMult() {
         let mult = new Decimal(1)
         if (hasUpgrade('OW', 23)) mult = mult.times(upgradeEffect('OW', 23))
@@ -62,7 +63,7 @@ addLayer("OW", {
 
         22: {
             title: "Automated Overwriting",
-            description: "Gain 50% of total Overwrites per second.",
+            description: "Gain 50% of Overwrites gained on reset per second.",
             cost: new Decimal(100), 
         },
 
@@ -77,12 +78,9 @@ addLayer("OW", {
         },
 
         31: {
-            title: "Reset Boosting^2",
-            description: "'Reset Boosting' is stronger.",
+            title: "Automated Overwriting^2",
+            description: "Gain 100% of Overwrites gained on reset per second.",
             cost: new Decimal(2000),
-            effect() {
-                return player.points.add(1).pow(0.1)
-            }
         },
     },
 })
