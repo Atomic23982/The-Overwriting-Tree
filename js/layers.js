@@ -13,7 +13,7 @@ addLayer("OW", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
-    update(diff) {Overwrites += totalOverwrites*0.05*diff},
+    passiveGeneration: 0.05,
     gainMult() {
         let mult = new Decimal(1)
         if (hasUpgrade('OW', 13)) mult = mult.times(upgradeEffect('OW', 13))
@@ -62,7 +62,7 @@ addLayer("OW", {
 
         21: {
             title: "Automated Overwriting",
-            description: "Gain 5% of total Overwrites per half a second.",
+            description: "Gain 5% of total Overwrites per second.",
             cost: new Decimal(100),
 
 
