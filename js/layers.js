@@ -12,7 +12,7 @@ addLayer("OW", {
     baseResource: "Resets", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.75,
+    exponent: 0.5,
     passiveGeneration() { if (hasUpgrade('OW', 21)) return 0.05 },
     gainMult() {
         let mult = new Decimal(1)
@@ -53,20 +53,20 @@ addLayer("OW", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
 
-        14: {
+        21: {
             title: "More Overwrites",
             description: "'Quick Resets' are stronger.",
             cost: new Decimal(20),
 
         },
 
-        21: {
+        22: {
             title: "Automated Overwriting",
             description: "Gain 5% of total Overwrites per second.",
             cost: new Decimal(100), 
         },
 
-        22: {
+        23: {
             title: "Smart Decisions",
             description: "Overwrites boost their own gain.",
             cost: new Decimal(200),
@@ -74,6 +74,15 @@ addLayer("OW", {
                 return player.OW.points.add(1).pow(0.1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, 
+        },
+
+        31: {
+            title: "Reset Boosting^2",
+            description: "'Reset Boosting' is stronger.",
+            cost: new Decimal(5,000),
+            effect() {
+                return player.points.add(1).pow(0.1)
+            }
         },
     },
 })
