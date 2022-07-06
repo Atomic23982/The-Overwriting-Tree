@@ -5,7 +5,6 @@ addLayer("OW", {
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
-        update(diff) {Overwrites += totalOverwrites*0.05*diff}
     }},
     color: "#BF40BF", 
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -14,6 +13,7 @@ addLayer("OW", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
+    update(diff) {Overwrites += totalOverwrites*0.05*diff},
     gainMult() {
         let mult = new Decimal(1)
         if (hasUpgrade('OW', 13)) mult = mult.times(upgradeEffect('OW', 13))
