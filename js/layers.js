@@ -57,5 +57,14 @@ addLayer("OW", {
             cost: new Decimal(20),
 
         },
+
+        milestones: {
+            0: {
+                requirementDescription: "1,000 Points",
+                effectDescription: "Get 5% of Overwrites per second",
+                done() { return player.w.points.gte(123) }
+            }
+            
+        }
     },
 })
