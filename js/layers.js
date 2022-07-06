@@ -79,7 +79,7 @@ addLayer("OW", {
         31: {
             title: "Reset Boosting^2",
             description: "'Reset Boosting' is stronger.",
-            cost: new Decimal(5,000),
+            cost: new Decimal(5000),
             effect() {
                 return player.points.add(1).pow(0.1)
             }
