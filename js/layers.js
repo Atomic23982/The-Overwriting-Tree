@@ -50,5 +50,11 @@ addLayer("OW", {
                 return player.points.add(1).pow(0.15)
             },
         },
+
+        13: {
+            title: "More Overwrites",
+            description: "'Quick Resets' are stronger.",
+            cost: new Decimal(20),
+        },
     },
 })
