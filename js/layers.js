@@ -45,7 +45,7 @@ addLayer("OW", {
         13: {
             title: "Reset Boosting",
             description: "Resets boost Reset gain.",
-            cost: new Decimal(10), 
+            cost: new Decimal(8), 
             effect() {
                 return player.points.add(1).pow(0.15)
             },
