@@ -15,7 +15,6 @@ addLayer("OW", {
     passiveGeneration() { if (hasUpgrade('OW', 21)) return 0.05 },
     gainMult() {
         let mult = new Decimal(1)
-        if (hasUpgrade('OW', 13)) mult = mult.times(upgradeEffect('OW', 13))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
