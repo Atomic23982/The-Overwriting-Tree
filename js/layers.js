@@ -13,9 +13,9 @@ addLayer("OW", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
-    gainMult() { // Calculate the multiplier for main currency from bonuses
-        if (hasUpgrade('OW', 13)) mult = mult.times(upgradeEffect('OW', 13))
+    gainMult() {
         let mult = new Decimal(1)
+        if (hasUpgrade('OW', 13)) mult = mult.times(upgradeEffect('OW', 13))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
