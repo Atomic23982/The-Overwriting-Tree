@@ -23,7 +23,7 @@ addLayer("OW", {
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "Shift+O", description: "Shift+O: Reset for Overwrites", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "Shift+o", description: "Shift+o: Reset for Overwrites", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true}, upgrades: {
         11: {
@@ -49,6 +49,7 @@ addLayer("OW", {
             effect() {
                 return player.points.add(1).pow(0.15)
             },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
 
         14: {
@@ -59,7 +60,7 @@ addLayer("OW", {
         },
 
         21: {
-            title: "Automated Resets",
+            title: "Automated Overwriting",
             description: "Gain 5% of total Overwrites per second.",
             cost: new Decimal(100),
 
