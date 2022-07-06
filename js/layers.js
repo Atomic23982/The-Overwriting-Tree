@@ -33,12 +33,26 @@ addLayer("OW", {
 
         12: {
             title: "Acceleration Boost",
-            description: "Boosts Reset gain.",
+            description: "Overwrites boost Reset gain.",
             cost: new Decimal(3), 
             effect() {
                 return player[this.layer].points.add(1).pow(0.5)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+
+        13: {
+            title: "Reset Boosting",
+            description: "Resets boost Reset gain.",
+            cost: new Decimal(10), 
+            effect() {
+                return player.points.add(1).pow(0.15)
+            },
+            gainMult() {
+                let mult = new Decimal(1)
+                if (hasUpgrade('p', 13)) mult = mult.times(upgradeEffect('p', 13))
+                return mult
+            },
         },
     },
 })
