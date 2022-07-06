@@ -16,6 +16,7 @@ addLayer("OW", {
     passiveGeneration() { if (hasUpgrade('OW', 21)) return 0.05 },
     gainMult() {
         let mult = new Decimal(1)
+        if (hasUpgrade('OW', 22)) mult = mult.times(upgradeEffect('OW', 22))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -62,10 +63,17 @@ addLayer("OW", {
         21: {
             title: "Automated Overwriting",
             description: "Gain 5% of total Overwrites per second.",
+            cost: new Decimal(100), 
+        },
+
+        22: {
+            title: "Smart Decisions",
+            description: "Overwrites boost their own gain.",
             cost: new Decimal(100),
-
-
-        
+            effect() {
+                return player.OW.points.add(1).pow(0.025)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, 
         },
     },
 })
