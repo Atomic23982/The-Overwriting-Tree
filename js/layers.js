@@ -55,6 +55,7 @@ addLayer("OW", {
             title: "More Overwrites",
             description: "'Quick Resets' are stronger.",
             cost: new Decimal(20),
+
         },
     },
 })
