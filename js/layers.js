@@ -50,7 +50,7 @@ addLayer("OW", {
             },
             gainMult() {
                 let mult = new Decimal(1)
-                if (hasUpgrade('p', 13)) mult = mult.times(upgradeEffect('p', 13))
+                if (hasUpgrade('OW', 13)) mult = mult.times(upgradeEffect('OW', 13))
                 return mult
             },
         },
