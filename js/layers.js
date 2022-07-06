@@ -58,13 +58,12 @@ addLayer("OW", {
 
         },
 
-        milestones: {
-            0: {
-                requirementDescription: "1,000 Points",
-                effectDescription: "Get 5% of Overwrites per second",
-                done() { return player.w.points.gte(123) }
-            }
-            
-        }
+        21: {
+            title: "Automated Resets",
+            description: "Gain 5% of total Overwrites per second.",
+            cost: new Decimal(100),
+
+        
+        },
     },
 })
