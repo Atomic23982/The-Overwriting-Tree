@@ -77,9 +77,12 @@ addLayer("OW", {
         },
 
         31: {
-            title: "Automated Overwriting^2",
-            description: "Gain 100% of Overwrites gained on reset per second.",
+            title: "Acceleration Boost^2",
+            description: "'Acceleration Boost' is stronger.",
             cost: new Decimal(2000),
+            effect() {
+                return player[this.layer].points.add(1).pow(2)
+            }
         },
     },
 })
