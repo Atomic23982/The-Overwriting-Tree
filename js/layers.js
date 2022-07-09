@@ -13,10 +13,15 @@ addLayer("OW", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5,
-    passiveGeneration() { if (hasUpgrade('OW', 22)) return 1 },
+    passiveGeneration() { if (hasUpgrade('OW', 22)) return 0.05 },
     gainMult() {
         let mult = new Decimal(1)
         if (hasUpgrade('OW', 23)) mult = mult.times(upgradeEffect('OW', 23))
+        if (hasUpgrade('TO', 11)) mult = mult.times*2.5
+        elseif (hasUpgrade('TO', 11)), and, player.OW.points == 25000, mult = mult.times*5
+        elseif (hasUpgrade('TO', 11)), and, player.OW.points == 100000, mult = mult.times*7.5
+        elseif (hasUpgrade('TO', 11)), and, player.OW.points == 1000000, mult = mult.times*10
+        if (hasUpgrade('TO', 12)) mult = mult.times*5
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -62,7 +67,7 @@ addLayer("OW", {
 
         22: {
             title: "Automated Overwriting",
-            description: "Gain 100% of Overwrites gained on reset per second.",
+            description: "Gain 5% of Overwrites gained on reset per second.",
             cost: new Decimal(100), 
         },
 
@@ -87,16 +92,16 @@ addLayer("OW", {
     },
 })
 
-addLayer("OB", {
-    name: "Overwrite Boosters", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "OB", // This appears on the layer's node. Default is the id with the first letter capitalized
-    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+addLayer("TO", {
+    name: "Time Overwrites", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "TO", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
     }},
     color: "#FFA500", 
-    requires: new Decimal(10), // Can be a function that takes requirement increases into account
-    resource: "Overwrite Boosters", // Name of prestige currency
+    requires: new Decimal(5000), // Can be a function that takes requirement increases into account
+    resource: "Time Overwrites", // Name of prestige currency
     baseResource: "Overwrites", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
@@ -109,7 +114,20 @@ addLayer("OB", {
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "B", description: "B: Reset for Overwrite Boosters", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "T", description: "T: Reset for Time Overwrites", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true},
+    layerShown(){return true}, upgrades: {
+
+        11: {
+            title: "Overwriting Time Itself",
+            description: "Overwrites are multipled by 2.5. Goes up by 2.5 until 10 when you reach the following Overwrites: 10,000, 25,000, 100,000, and 1,000,000.",
+            cost: new Decimal(3)
+        },
+
+        12: {
+            title: "Erasing Time",
+            description: "Resets are multipled by 5.",
+            cost: new Decimal(10), 
+        },
+    }
 })    
