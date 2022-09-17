@@ -18,9 +18,9 @@ addLayer("OW", {
         let mult = new Decimal(1)
         if (hasUpgrade('OW', 23)) mult = mult.times(upgradeEffect('OW', 23))
         if (hasUpgrade('TO', 11)) mult = mult.times*2.5
-        elseif (hasUpgrade('TO', 11)), and, player.OW.points == 25000, mult = mult.times*5
-        elseif (hasUpgrade('TO', 11)), and, player.OW.points == 100000, mult = mult.times*7.5
-        elseif (hasUpgrade('TO', 11)), and, player.OW.points == 1000000, mult = mult.times*10
+            elseif (hasUpgrade('TO', 11)), and, player.OW.points > 25000, mult = mult.times*5
+            elseif (hasUpgrade('TO', 11)), and, player.OW.points > 100000, mult = mult.times*7.5
+            elseif (hasUpgrade('TO', 11)), and, player.OW.points > 1000000, mult = mult.times*10
         if (hasUpgrade('TO', 12)) mult = mult.times*5
         return mult
     },
