@@ -64,7 +64,7 @@ addLayer("OW", {
 
         22: {
             title: "Automated Overwriting",
-            description: "Gain 5% of Overwrites gained on reset per second.",
+            description: "Gain 50% of Overwrites gained on reset per second.",
             cost: new Decimal(100), 
         },
 
@@ -83,7 +83,7 @@ addLayer("OW", {
             description: "'Acceleration Boost' is stronger.",
             cost: new Decimal(2000),
             effect() {
-                return player[this.layer].points.add(1).pow(0.25)
+                return player[this.layer].points.add(1).pow(1.10)
             }
         },
     },
@@ -108,12 +108,23 @@ addLayer("TO", {
     let mult = new Decimal(1)
     return mult
 },
-gainExp() { // Calculate the exponent on main currency from bonuses
+    gainExp() { // Calculate the exponent on main currency from bonuses
     return new Decimal(1)
-},
-row: 1, // Row the layer is in on the tree (0 is the first row)
-hotkeys: [
-    {key: "T", description: "T: Reset for Time Overwrites", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+ },
+    row: 1, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "T", description: "T: Reset for Time Overwrites", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
 ],
-layerShown(){return true}, upgrades: {
-}})
+    layerShown(){return true}, buyables: {
+        11: {
+            cost(x) { return new Decimal(1).mul(x) },
+            display() { return "Time Dilatation" },
+            canAfford() { return player[this.layer].points.gte(this.cost()) },
+            buy() {
+                player[this.layer].points = player[this.layer].points.sub(this.cost())
+                setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+            },
+        },
+    }
+})
+
